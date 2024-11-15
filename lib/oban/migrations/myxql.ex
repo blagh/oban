@@ -15,17 +15,17 @@ defmodule Oban.Migrations.MyXQL do
       add :state, states, null: false, default: "available"
       add :queue, :string, null: false, default: "default"
       add :worker, :string, null: false
-      add :args, :json, null: false, default: %{}
-      add :meta, :json, null: false, default: %{}
-      add :tags, :json, null: false, default: fragment("('[]')")
-      add :attempted_by, :json, null: false, default: fragment("('[]')")
-      add :errors, :json, null: false, default: fragment("('[]')")
+      add :args, :json, null: false
+      add :meta, :json, null: false
+      add :tags, :json, null: false
+      add :attempted_by, :json, null: false
+      add :errors, :json, null: false
       add :attempt, :integer, null: false, default: 0
       add :max_attempts, :integer, null: false, default: 20
       add :priority, :integer, null: false, default: 0
 
-      add :inserted_at, :utc_datetime_usec, null: false, default: fragment("(UTC_TIMESTAMP(6))")
-      add :scheduled_at, :utc_datetime_usec, null: false, default: fragment("(UTC_TIMESTAMP(6))")
+      add :inserted_at, :utc_datetime_usec, null: false, default: fragment("CURRENT_TIMESTAMP(6)")
+      add :scheduled_at, :utc_datetime_usec, null: false, default: fragment("CURRENT_TIMESTAMP(6)")
       add :attempted_at, :utc_datetime_usec
       add :cancelled_at, :utc_datetime_usec
       add :completed_at, :utc_datetime_usec

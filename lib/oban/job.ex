@@ -139,12 +139,12 @@ defmodule Oban.Job do
     field :state, :string, default: "available"
     field :queue, :string, default: "default"
     field :worker, :string
-    field :args, :map
+    field :args, :map, default: %{}
     field :meta, :map, default: %{}
     field :tags, {:array, :string}, default: []
     field :errors, {:array, :map}, default: []
     field :attempt, :integer, default: 0
-    field :attempted_by, {:array, :string}
+    field :attempted_by, {:array, :string}, default: []
     field :max_attempts, :integer, default: 20
     field :priority, :integer
 

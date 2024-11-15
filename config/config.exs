@@ -13,7 +13,9 @@ config :oban, Oban.Test.Repo,
   priv: "test/support/postgres",
   show_sensitive_data_on_connection_error: true,
   stacktrace: true,
-  url: System.get_env("POSTGRES_URL") || "postgres://localhost:5432/oban_test"
+  url: System.get_env("POSTGRES_URL") || "postgres://localhost:5432/oban_test",
+  username: "postgres",
+  password: "pagerduty"
 
 config :oban, Oban.Test.LiteRepo,
   database: "priv/oban.db",
@@ -27,7 +29,9 @@ config :oban, Oban.Test.DolphinRepo,
   priv: "test/support/myxql",
   show_sensitive_data_on_connection_error: true,
   stacktrace: true,
-  url: System.get_env("MYSQL_URL") || "mysql://root@localhost:3306/oban_test"
+  url: System.get_env("MYSQL_URL") || "mysql://root@localhost:3307/oban_test",
+  password: "pagerduty",
+  log_level: :debug
 
 config :oban,
   ecto_repos: [Oban.Test.Repo, Oban.Test.LiteRepo, Oban.Test.DolphinRepo]
